@@ -1,0 +1,7 @@
+/* Docker & System Files */
+_docker
+.DS_Store
+
+/* WebApp */
+public/polymath.ini
+public/vendor
