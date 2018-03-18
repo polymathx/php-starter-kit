@@ -9,4 +9,6 @@ A starter PHP app for running sites from the Polymath API.
 
 ## Theme Dependencies
 
-* Dwoo
+* Dwoo for templating
+* PHP SimpleCache for API call caching
+* SCSSphp for SCSS compiling 
