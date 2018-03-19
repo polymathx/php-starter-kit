@@ -1,9 +1,12 @@
 <?php
+
 	class PolymathApiLoader {
 		var $key;
+		var $cache;
 
-		function set_key($key) {
-		    $this->key = $key;
+		function init($conf, $cache) {
+		    $this->key = $conf['api_key'];
+				$this->cache = $cache;
 		}
 
 		function url($path) {
@@ -16,8 +19,18 @@
 		}
 
 		function get($path = '/') {
-			$json = file_get_contents($this->url($path));
-			return json_decode($json, true);
+			$url = $this->url($path);
+			$cache_tag = hash('sha256', $url);
+
+			if($data = $this->cache->get_cache($cache_tag)){
+				$data = json_decode($data, true);
+			} else {
+				$data = $this->cache->do_curl($url);
+				$this->cache->set_cache($cache_tag, $data);
+				$data = json_decode($data, true);
+			}
+
+			return $data;
 		}
 
 		function test($data) {

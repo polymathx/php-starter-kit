@@ -5,3 +5,4 @@ _docker
 /* WebApp */
 public/polymath.ini
 public/vendor
+public/cache
