@@ -3,5 +3,5 @@
 	$data = $polymath->get();
 
 	// Output the result
-	echo $tpl->get('templates/index.html', $data);
+	echo $tpl->get('index.html', $data);
 ?>

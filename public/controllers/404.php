@@ -1,4 +1,4 @@
-<?php	
+<?php
 	// Output the result
-	echo $tpl->get('templates/404.html');
+	echo $tpl->get('404.html');
 ?>
