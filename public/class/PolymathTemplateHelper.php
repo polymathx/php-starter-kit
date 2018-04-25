@@ -10,8 +10,12 @@
         openlog("polymathTplLogger", LOG_PID | LOG_PERROR, LOG_LOCAL0);
 		}
 
+    function get_theme_folder() {
+      return './templates/' . $this->conf['theme'];
+    }
+
     function theme_path($path) {
-      return './templates/' . $this->conf['theme'] . '/' . $path;
+      return $this->get_theme_folder() . '/' . $path;
     }
 
     function shared_path($path) {

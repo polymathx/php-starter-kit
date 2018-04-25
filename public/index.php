@@ -18,7 +18,10 @@ $tpl_engine = new Dwoo\Core();
 $tpl = new PolymathTemplateHelper;
 $tpl->init($polymath, $tpl_engine);
 
+define('THEME_FOLDER', $tpl->get_theme_folder());
+
 $website_meta = array('global_meta' => $polymath->build_meta_data());
+define('GLOBAL_META', $website_meta['global_meta']);
 
 //Load Routes
 require 'config/routes.php';
