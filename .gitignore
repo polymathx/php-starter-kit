@@ -6,3 +6,5 @@ _docker
 public/polymath.ini
 public/vendor
 public/cache
+public/.git
+public/.gitignore
