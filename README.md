@@ -17,3 +17,5 @@ A starter PHP app for running sites from the Polymath API.
 
 * Update code commenting
 * Document / standardize theme folder rules
+* Secure subfolders
+* Create static folder
