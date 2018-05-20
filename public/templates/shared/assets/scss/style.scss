@@ -1,0 +1,43 @@
+//Notifications for forms
+.notification {
+  display: none;
+  border-radius: 2px;
+  padding:5px;
+  margin: 5px;
+  &.active {
+    display:block;
+  }
+  &.success {
+    background: #7fc35c;
+    color: #fff;
+    border: 1px solid darken(#7fc35c, 15%);
+  }
+  &.danger {
+    background: #d26d54;
+    color: #fff;
+    border: 1px solid darken(#d26d54, 15%);
+  }
+}
+//whitewash image
+img.whitewash {
+  -webkit-filter: brightness(0) invert(1);
+  filter: brightness(0) invert(1);
+}
+
+.contact-form {
+  position: relative;
+  .spinner {
+    &.active {
+      display:block;
+    }
+    display:none;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    height: 100%;
+    background: rgba(255,255,255,0.7);
+    z-index: 10;
+    font-size: 70px;
+    top:0;
+  }
+}
