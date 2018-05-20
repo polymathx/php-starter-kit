@@ -8,3 +8,8 @@ public/vendor
 public/cache
 public/.git
 public/.gitignore
+
+/*Ignore all templates except for default and shared */
+/public/templates/*
+!/public/templates/default/*
+!/public/templates/shared/*

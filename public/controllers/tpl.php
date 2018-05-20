@@ -11,5 +11,6 @@
   $params = new Dwoo\Data();
   // Fill it with some data
   $params->assign('meta', GLOBAL_META);
+  $params->assign('bodyclass', '');
 
 ?>

@@ -4,7 +4,7 @@ function get_handler($controller, $data) {
   $base = './controllers/' . $controller . '.php';
   $static = './controllers/tpl/page.php';
   $theme_base = THEME_FOLDER . '/handlers/' . $controller . '.php';
-  error_log($theme_base);
+  error_log('LOGGING BASE || '. $controller);
   if(file_exists($theme_base)) {
     require $theme_base;
   } else if(file_exists($base)) {
@@ -17,10 +17,20 @@ function get_handler($controller, $data) {
 $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $theme_routes = THEME_FOLDER . '/_cfg/' . 'routes.php';
 
-    $r->addRoute('GET', '/polymath.ini', 'tpl/404');
+    //Default Home Route
     $r->addRoute('GET', '/', 'home');
+
+    // SEO Routes
     $r->addRoute('GET', '/robots.txt', 'seo/robots');
     $r->addRoute('GET', '/sitemap.xml', 'seo/sitemap');
+
+    //Asset Routes
+    $r->addRoute('GET', '/styles/compiled.css', 'assets/scss');
+
+    //API / Form routes
+    $r->addRoute('POST', '/api/form', 'api/form');
+    $r->addRoute('GET', '/api/form', 'api/form');
+
     if(file_exists($theme_routes)) {
       require $theme_routes;
     }
@@ -49,6 +59,8 @@ switch ($routeInfo[0]) {
     case FastRoute\Dispatcher::FOUND:
         $handler = $routeInfo[1];
         $vars = $routeInfo[2];
+        $tpl_engine->addGlobal('uri', $uri);
+        $tpl_engine->addGlobal('handler', $handler);
         get_handler($handler, array('tpl' => $tpl, 'api' => $polymath, 'url' => $routeInfo));
         break;
 }

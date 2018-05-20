@@ -21,6 +21,14 @@
 			return $meta[0];
 		}
 
+		function contents_from_model($model_id) {
+			return $this->get('/contents/model/'.$model_id);
+		}
+
+		function get_page($page) {
+			return $this->get('/contents/'.$page);
+		}
+
 		function get($path = '/') {
 			$url = $this->url($path);
 			$cache_tag = hash('sha256', $url);
