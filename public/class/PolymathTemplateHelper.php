@@ -34,16 +34,13 @@
       return './templates/shared/' . $path;
     }
 
-		function url_parts() {
-			$pageURL = 'http';
-			if ($_SERVER["HTTPS"] == "on") {$pageURL .= "s";}
-			$pageURL .= "://";
-			if ($_SERVER["SERVER_PORT"] != "80") {
-				$pageURL .= $_SERVER["SERVER_NAME"].":".$_SERVER["SERVER_PORT"].$_SERVER["REQUEST_URI"];
-			} else {
-				$pageURL .= $_SERVER["SERVER_NAME"].$_SERVER["REQUEST_URI"];
+		function url() {
+			if(!empty($_SERVER['HTTP_X_FORWARDED_PROTO'])){
+				$proto .= $_SERVER['HTTP_X_FORWARDED_PROTO'].'://';
+			} else{
+				$proto .= !empty($_SERVER['HTTPS']) ? "https://" : "http://";
 			}
-			return parse_url($pageURL);
+			return $proto . $_SERVER['HTTP_HOST'] . '/';
 		}
 
     function get_file_path($path) {

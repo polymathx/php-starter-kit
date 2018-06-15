@@ -23,6 +23,7 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     // SEO Routes
     $r->addRoute('GET', '/robots.txt', 'seo/robots');
     $r->addRoute('GET', '/sitemap.xml', 'seo/sitemap');
+    $r->addRoute('GET', '/sitemaps/{map}.xml', 'seo/sitemap');
 
     //Asset Routes
     $r->addRoute('GET', '/styles/compiled.css', 'assets/scss');
