@@ -32,6 +32,9 @@ $dispatcher = FastRoute\simpleDispatcher(function(FastRoute\RouteCollector $r) {
     $r->addRoute('POST', '/api/form', 'api/form');
     $r->addRoute('GET', '/api/form', 'api/form');
 
+    //Debug
+    $r->addRoute('GET', '/system.info', 'system');
+
     if(file_exists($theme_routes)) {
       require $theme_routes;
     }

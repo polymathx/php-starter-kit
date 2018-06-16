@@ -35,8 +35,9 @@
     }
 
 		function url() {
-			if(!empty($_SERVER['HTTP_X_FORWARDED_PROTO'])){
-				$proto .= $_SERVER['HTTP_X_FORWARDED_PROTO'].'://';
+			if(!empty($_SERVER['HTTP_CF_VISITOR'])){
+				$cf_data = json_decode($_SERVER['HTTP_CF_VISITOR'],true);
+				$proto .= $cf_data['scheme'] ? $cf_data['scheme'] .'://' : 'http://';
 			} else{
 				$proto .= !empty($_SERVER['HTTPS']) ? "https://" : "http://";
 			}
