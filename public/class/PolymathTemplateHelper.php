@@ -35,6 +35,7 @@
     }
 
 		function url() {
+			$proto = '';
 			if(!empty($_SERVER['HTTP_CF_VISITOR'])){
 				$cf_data = json_decode($_SERVER['HTTP_CF_VISITOR'],true);
 				$proto .= $cf_data['scheme'] ? $cf_data['scheme'] .'://' : 'http://';
